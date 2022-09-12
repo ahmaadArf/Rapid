@@ -116,4 +116,25 @@ class CategryController extends Controller
         return redirect()->route('admin.categries.index')->
         with('msg', 'Categry delete successfully')->with('type', 'success');
     }
+    public function trash()
+    {
+        $categories = PortfolioCategry::onlyTrashed()->paginate(10);
+
+        return view('admin.categry.trash', compact('categories'));
+    }
+
+    public function restore($id)
+    {
+        // Category::onlyTrashed()->find($id)->update(['deleted_at' => null]);
+        PortfolioCategry::onlyTrashed()->find($id)->restore();
+
+        return redirect()->route('admin.categries.index')->with('msg', 'Category restored successfully')->with('type', 'warning');
+    }
+
+    public function forcedelete($id)
+    {
+        PortfolioCategry::onlyTrashed()->find($id)->forcedelete();
+
+        return redirect()->route('admin.categries.index')->with('msg', 'Category deleted permanintly successfully')->with('type', 'danger');
+    }
 }

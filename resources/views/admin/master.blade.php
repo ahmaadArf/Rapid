@@ -22,7 +22,7 @@
    <style>
     .sidebar {
 
-        width: 230px !important;
+        width: 300px !important;
         height: 600px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -36,9 +36,10 @@
         }
         .sidebar {
             padding: 0;
+            width: 300px !important;
             height: 600px;
             overflow: scroll;
-                    overflow-x: hidden;
+          overflow-x: hidden;
 
         }
         .sidebar .nav-item .nav-link {

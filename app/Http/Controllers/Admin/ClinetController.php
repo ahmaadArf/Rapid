@@ -127,4 +127,24 @@ class ClinetController extends Controller
         return redirect()->route('admin.clients.index')->
         with('msg', 'Client delete successfully')->with('type', 'success');
     }
+    public function trash()
+    {
+        $clients = Client::onlyTrashed()->paginate(10);
+
+        return view('admin.client.trash', compact('clients'));
+    }
+
+    public function restore($id)
+    {
+        Client::onlyTrashed()->find($id)->restore();
+
+        return redirect()->route('admin.clients.index')->with('msg', 'Client restored successfully')->with('type', 'warning');
+    }
+
+    public function forcedelete($id)
+    {
+        Client::onlyTrashed()->find($id)->forcedelete();
+
+        return redirect()->route('admin.clients.index')->with('msg', 'Client deleted permanintly successfully')->with('type', 'danger');
+    }
 }

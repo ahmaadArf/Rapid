@@ -126,4 +126,24 @@ class ImageController extends Controller
         return redirect()->route('admin.images.index')->
         with('msg', 'Image delete successfully')->with('type', 'success');
     }
+    public function trash()
+    {
+        $images =PortfolioDetaileImage::onlyTrashed()->with('portfolioDetaile')->paginate(10);
+        // $images=PortfolioDetaileImage::with('portfolioDetaile')->paginate(10);
+
+        return view('admin.image.trash', compact('images'));
+    }
+
+    public function restore($id)
+    {
+       PortfolioDetaileImage::onlyTrashed()->find($id)->restore();
+        return redirect()->route('admin.images.index')->with('msg', 'Image restored successfully')->with('type', 'warning');
+    }
+
+    public function forcedelete($id)
+    {
+       PortfolioDetaileImage::onlyTrashed()->find($id)->forcedelete();
+
+        return redirect()->route('admin.images.index')->with('msg', 'Image deleted permanintly successfully')->with('type', 'danger');
+    }
 }

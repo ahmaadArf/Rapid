@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('site.index') }}">
         <div class="sidebar-brand-icon ">
             {{--  <i class="fas fa-laugh-wink"></i>  --}}
             <i class="fas fa-business-time"></i>
@@ -33,6 +33,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.clients.index') }}">{{ __('word.all') }} {{ __('word.clients') }}</a>
                 <a class="collapse-item" href="{{ route('admin.clients.create') }}">{{ __('word.add') }} {{ __('word.client')  }}</a>
+                <a class="collapse-item" href="{{ route('admin.clients.trash') }}">Trash</a>
             </div>
         </div>
     </li>
@@ -50,6 +51,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.categries.index') }}">{{ __('word.all') }} Portfolio Categries</a>
                 <a class="collapse-item" href="{{ route('admin.categries.create') }}">{{ __('word.add') }} Portfolio Categry</a>
+                <a class="collapse-item" href="{{ route('admin.categries.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
@@ -67,6 +70,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.detailes.index') }}">{{ __('word.all') }} Portfolio Detailes</a>
                 <a class="collapse-item" href="{{ route('admin.detailes.create') }}">{{ __('word.add') }} Portfolio Detaile</a>
+                <a class="collapse-item" href="{{ route('admin.detailes.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
@@ -85,6 +90,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.images.index') }}">{{ __('word.all') }} Images</a>
                 <a class="collapse-item" href="{{ route('admin.images.create') }}">{{ __('word.add') }} Image</a>
+                <a class="collapse-item" href="{{ route('admin.images.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
@@ -100,8 +107,10 @@
         </a>
         <div id="collapsequestions" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">{{ __('word.all') }} Questions</a>
-                <a class="collapse-item" href="cards.html">{{ __('word.add') }} Question</a>
+                <a class="collapse-item" href="{{ route('admin.questions.index') }}">{{ __('word.all') }} Questions</a>
+                <a class="collapse-item" href="{{ route('admin.questions.create') }}">{{ __('word.add') }} Question</a>
+                <a class="collapse-item" href="{{ route('admin.questions.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
@@ -118,8 +127,10 @@
         </a>
         <div id="collapseservices" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">{{ __('word.all') }} Services</a>
-                <a class="collapse-item" href="cards.html">{{ __('word.add') }} Service</a>
+                <a class="collapse-item" href="{{ route('admin.services.index') }}">{{ __('word.all') }} Services</a>
+                <a class="collapse-item" href="{{ route('admin.services.create') }}">{{ __('word.add') }} Service</a>
+                <a class="collapse-item" href="{{ route('admin.services.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
@@ -135,8 +146,10 @@
         </a>
         <div id="collapseteams" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">{{ __('word.all') }} Teams</a>
-                <a class="collapse-item" href="cards.html">{{ __('word.add') }} Team</a>
+                <a class="collapse-item" href="{{ route('admin.teams.index') }}">{{ __('word.all') }} Teams</a>
+                <a class="collapse-item" href="{{ route('admin.teams.create') }}">{{ __('word.add') }} Team</a>
+                <a class="collapse-item" href="{{ route('admin.teams.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
@@ -152,15 +165,17 @@
         </a>
         <div id="collapsetestimonials" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">{{ __('word.all') }} Testimonials</a>
-                <a class="collapse-item" href="cards.html">{{ __('word.add') }} Testimonial</a>
+                <a class="collapse-item" href="{{ route('admin.testimonials.index') }}">{{ __('word.all') }} Testimonials</a>
+                <a class="collapse-item" href="{{ route('admin.testimonials.create') }}">{{ __('word.add') }} Testimonial</a>
+                <a class="collapse-item" href="{{ route('admin.testimonials.trash') }}">Trash</a>
+
             </div>
         </div>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.index') }}">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
             {{--  <i class="fas fa-fw fa-tachometer-alt"></i>  --}}
             <i class="fas fa-users"></i>
             <span>{{ __('word.users') }}</span></a>

@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('job');
+            $table->string('name_en');
+            $table->string('name_ar');
+            $table->string('job_en');
+            $table->string('job_ar');
             $table->string('image');
-            $table->string('facebook');
-            $table->string('instagram');
-            $table->string('twitter');
-            $table->string('linkedin');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

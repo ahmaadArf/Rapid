@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('icon');
-            $table->string('title');
-            $table->text('content');
+            $table->string('title_en');
+            $table->string('title_ar');
+            $table->text('content_en');
+            $table->text('content_ar');
             $table->timestamps();
             $table->softDeletes();
 

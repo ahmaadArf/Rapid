@@ -150,4 +150,23 @@ class DetaileController extends Controller
         return redirect()->route('admin.detailes.index')->
         with('msg', 'Detaile delete successfully')->with('type', 'success');
     }
+    public function trash()
+    {
+        $detailes = PortfolioDetaile::onlyTrashed()->paginate(10);
+
+        return view('admin.detaile.trash', compact('detailes'));
+    }
+
+    public function restore($id)
+    {
+        PortfolioDetaile::onlyTrashed()->find($id)->restore();
+        return redirect()->route('admin.detailes.index')->with('msg', 'Detaile restored successfully')->with('type', 'warning');
+    }
+
+    public function forcedelete($id)
+    {
+        PortfolioDetaile::onlyTrashed()->find($id)->forcedelete();
+
+        return redirect()->route('admin.detailes.index')->with('msg', 'Detaile deleted permanintly successfully')->with('type', 'danger');
+    }
 }
