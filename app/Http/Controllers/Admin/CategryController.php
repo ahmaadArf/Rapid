@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class CategryController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:categry-list|categry-create|categry-edit|categry-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:categry-create', ['only' => ['create','store']]);
+         $this->middleware('permission:categry-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:categry-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

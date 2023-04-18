@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -18,8 +19,8 @@ use App\Http\Controllers\Admin\TestimonialController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Dashoard Routes
-Route::prefix(LaravelLocalization::setLocale())->group(function () {
-                //->middleware('auth','check_user')
+Route::prefix(LaravelLocalization::setLocale())->middleware('auth','check_user')->group(function () {
+                //
     Route::prefix('admin')->name('admin.')->group(function () {
     //Admin Route
     Route::get('/',[AdminController::class,'index'])->name('index');
@@ -73,8 +74,12 @@ Route::prefix(LaravelLocalization::setLocale())->group(function () {
     Route::resource('testimonials',TestimonialController::class);
 
     //User Route
-    Route::get('users',[UserController::class,'index'])->name('users.index');
-    Route::delete('user/{id}',[UserController::class,'destroy'])->name('users.destroy');
+    Route::resource('users',UserController::class);
+
+     //Role Route
+     Route::resource('roles',RoleController::class);
+
+
     });
 });
 //->middleware('auth','check_user')

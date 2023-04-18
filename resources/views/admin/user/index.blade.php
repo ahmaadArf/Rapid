@@ -1,9 +1,5 @@
 @extends('admin.master')
-@section('title', 'User | ' . env('APP_NAME'))
-
-@php
-    $name = 'name_'.app()->currentLocale();
-@endphp
+@section('title','Home')
 @section('content')
 
     <h1>All Users</h1>
@@ -19,6 +15,8 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Type</th>
+                <th>Role</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -27,8 +25,16 @@
                 @foreach ($users as $user)
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }} </td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->type }}</td>
                     <td>
+                    @foreach ($user->getRoleNames() as $name)
+                    <span class="badge rounded-pill bg-dark " style="color: white">{{ $name }}</span>
+                    @endforeach
+                </td>
+
+                    <td>
+                        <a class="btn btn-primary" href="{{ route('admin.users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
                         <form class="d-inline" action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('delete')
@@ -41,4 +47,3 @@
     </table>
 
 @stop
-
